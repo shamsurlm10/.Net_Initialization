@@ -1,0 +1,14 @@
+E:\Shamsur\.net\Ecommerce.Models\bin\Debug\net7.0\Ecommerce.Models.deps.json
+E:\Shamsur\.net\Ecommerce.Models\bin\Debug\net7.0\Ecommerce.Models.dll
+E:\Shamsur\.net\Ecommerce.Models\bin\Debug\net7.0\Ecommerce.Models.pdb
+E:\Shamsur\.net\Ecommerce.Models\obj\Debug\net7.0\Ecommerce.Models.csproj.AssemblyReference.cache
+E:\Shamsur\.net\Ecommerce.Models\obj\Debug\net7.0\Ecommerce.Models.GeneratedMSBuildEditorConfig.editorconfig
+E:\Shamsur\.net\Ecommerce.Models\obj\Debug\net7.0\Ecommerce.Models.AssemblyInfoInputs.cache
+E:\Shamsur\.net\Ecommerce.Models\obj\Debug\net7.0\Ecommerce.Models.AssemblyInfo.cs
+E:\Shamsur\.net\Ecommerce.Models\obj\Debug\net7.0\Ecommerce.Models.csproj.CoreCompileInputs.cache
+E:\Shamsur\.net\Ecommerce.Models\obj\Debug\net7.0\Ecommerce.Models.dll
+E:\Shamsur\.net\Ecommerce.Models\obj\Debug\net7.0\refint\Ecommerce.Models.dll
+E:\Shamsur\.net\Ecommerce.Models\obj\Debug\net7.0\Ecommerce.Models.pdb
+E:\Shamsur\.net\Ecommerce.Models\obj\Debug\net7.0\ref\Ecommerce.Models.dll
+E:\Shamsur\.net\Ecommerce.Models\bin\Debug\net7.0\Ecommerce.Models.runtimeconfig.json
+E:\Shamsur\.net\Ecommerce.Models\obj\Debug\net7.0\Ecommerce.Models.genruntimeconfig.cache
