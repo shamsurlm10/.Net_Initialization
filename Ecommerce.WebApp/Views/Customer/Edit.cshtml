@@ -1,0 +1,21 @@
+﻿@model CustomerEditVM
+<h3>Customer Create</h3>
+<form method="POST">
+    <input type ="hidden" asp-for="Id"/>
+    <div class="mb-3">
+        <label for="name" class="form-label">Name</label>
+        <input type="name" class="form-control" asp-for="Name">
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label for="email" class="form-label">Email address</label>
+        <input type="email" class="form-control" asp-for="Email">
+        <span asp-validation-for="Email" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label for="phone" class="form-label">Phone</label>
+        <input type="text" class="form-control" asp-for="Phone">
+        <span asp-validation-for="Phone" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>

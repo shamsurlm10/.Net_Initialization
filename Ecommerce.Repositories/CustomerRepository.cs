@@ -1,5 +1,6 @@
 ﻿using Ecommerce.Database;
 using Ecommerce.Models.EntityModels;
+using Ecommerce.Models.UtilityModels;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -50,6 +51,27 @@ namespace Ecommerce.Repositories
         public ICollection<Customer> GetAll()
         {
             return _db.Customers.ToList();
+        }
+        public ICollection<Customer> Search(CustomerSearchCriteria customerSearchCriteria)
+        {
+            //imediate execution
+            var customers = _db.Customers.AsQueryable();
+
+            if(customerSearchCriteria != null && !string.IsNullOrEmpty(customerSearchCriteria.Name))
+            {
+                customers = customers.Where(c=>c.Name.ToLower().Contains(customerSearchCriteria.Name.ToLower()));
+            }
+            if (customerSearchCriteria != null && !string.IsNullOrEmpty(customerSearchCriteria.Phone))
+            {
+                customers = customers.Where(c => c.Phone.ToLower().Contains(customerSearchCriteria.Phone.ToLower()));
+            }
+            if (customerSearchCriteria != null && !string.IsNullOrEmpty(customerSearchCriteria.Email))
+            {
+                customers = customers.Where(c => c.Email.ToLower().Contains(customerSearchCriteria.Email.ToLower()));
+            }
+
+            int skipSize = (customerSearchCriteria.CurrentPage-1)*customerSearchCriteria.PageSize;
+            return customers.Skip(skipSize).Take(customerSearchCriteria.PageSize).ToList();
         }
     }
 }

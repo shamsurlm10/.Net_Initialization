@@ -1,7 +1,8 @@
-﻿namespace Ecommerce.WebApp.Models
+﻿namespace Ecommerce.WebApp.Models.CustomerList
 {
-    public class CustomerListViewModel
+    public class CustomerListItem
     {
+        public int Id { get; set; }
         public string Name { get; set; }
 
         public string Phone { get; set; }
