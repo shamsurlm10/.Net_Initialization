@@ -1,4 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Ecommerce.Models.EntityModels;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using System.ComponentModel.DataAnnotations;
 
 namespace Ecommerce.WebApp.Models
 {
@@ -10,5 +12,9 @@ namespace Ecommerce.WebApp.Models
         public String Email { get; set; }
         [Required]
         public String Phone { get; set; }
+
+        public int? CustomerCategoryId { get; set; }
+
+        public IEnumerable<SelectListItem>? Categories { get; set; }
     }
 }

@@ -4,6 +4,7 @@ using Ecommerce.Repositories;
 using Ecommerce.WebApp.Models;
 using Ecommerce.WebApp.Models.CustomerList;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using System.ComponentModel.DataAnnotations;
 
 namespace Ecommerce.WebApp.Controllers
@@ -11,10 +12,12 @@ namespace Ecommerce.WebApp.Controllers
     public class CustomerController : Controller
     {
         CustomerRepository _customerRepository;
+        CustomerCategoryRepository customerCategoryRepository;
 
         public CustomerController()
         {
             _customerRepository = new CustomerRepository();
+            customerCategoryRepository = new CustomerCategoryRepository();
         }
 
         public IActionResult Index(CustomerSearchCriteria customerSearchCriteria)
@@ -36,7 +39,15 @@ namespace Ecommerce.WebApp.Controllers
         }
         public IActionResult Create()
         {
-            return View();
+            var categories = customerCategoryRepository.GetAll();
+            var categoryListItem = categories.Select(c => new SelectListItem()
+            {
+                Value=c.Id.ToString(),
+                Text=c.Name,
+            });
+            var model = new CustomerCreate();
+            model.Categories = categoryListItem;
+            return View(model);
         }
         [HttpPost]
         public IActionResult Create(CustomerCreate model)

@@ -9,5 +9,10 @@
         public string Phone { get; set; }
 
         public string? Email { get; set; }
+
+        public CustomerCategory? CustomerCategory { get; set; }
+        public int? CustomerCategoryId { get; set; } 
+
+
     }
 }
