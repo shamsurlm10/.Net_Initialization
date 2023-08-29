@@ -1,6 +1,7 @@
 ﻿using Ecommerce.Models.EntityModels;
 using Ecommerce.Models.UtilityModels;
 using Ecommerce.Repositories;
+using Ecommerce.Repositories.Abstractions;
 using Ecommerce.WebApp.Models;
 using Ecommerce.WebApp.Models.CustomerList;
 using Microsoft.AspNetCore.Mvc;
@@ -11,13 +12,13 @@ namespace Ecommerce.WebApp.Controllers
 {
     public class CustomerController : Controller
     {
-        CustomerRepository _customerRepository;
-        CustomerCategoryRepository customerCategoryRepository;
+        ICustomerRepository _customerRepository;
+        ICustomerCategoryRepository _customerCategoryRepository;
 
-        public CustomerController()
+        public CustomerController(ICustomerRepository customerRepository, ICustomerCategoryRepository customerCategoryRepository)
         {
-            _customerRepository = new CustomerRepository();
-            customerCategoryRepository = new CustomerCategoryRepository();
+            _customerRepository = customerRepository;
+            _customerCategoryRepository = customerCategoryRepository;
         }
 
         public IActionResult Index(CustomerSearchCriteria customerSearchCriteria)
@@ -39,16 +40,23 @@ namespace Ecommerce.WebApp.Controllers
         }
         public IActionResult Create()
         {
+            CustomerCreate model = GetCustomerModelWithCategory();
+            return View(model);
+        }
+
+        private CustomerCreate GetCustomerModelWithCategory()
+        {
             var categories = customerCategoryRepository.GetAll();
             var categoryListItem = categories.Select(c => new SelectListItem()
             {
-                Value=c.Id.ToString(),
-                Text=c.Name,
+                Value = c.Id.ToString(),
+                Text = c.Name,
             });
             var model = new CustomerCreate();
             model.Categories = categoryListItem;
-            return View(model);
+            return model;
         }
+
         [HttpPost]
         public IActionResult Create(CustomerCreate model)
         {
@@ -66,7 +74,9 @@ namespace Ecommerce.WebApp.Controllers
                     return RedirectToAction("Index");
                 }
             }
-            return View();
+            var createModel = GetCustomerModelWithCategory();
+            model.Categories = createModel.Categories;
+            return View(model);
         }
         public IActionResult Edit(int? id)
         {

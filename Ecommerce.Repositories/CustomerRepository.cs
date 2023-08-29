@@ -1,6 +1,7 @@
 ﻿using Ecommerce.Database;
 using Ecommerce.Models.EntityModels;
 using Ecommerce.Models.UtilityModels;
+using Ecommerce.Repositories.Abstractions;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -10,13 +11,13 @@ using System.Threading.Tasks;
 
 namespace Ecommerce.Repositories
 {
-    public class CustomerRepository
+    public class CustomerRepository: ICustomerRepository
     {
         ApplicationDbContext _db;
 
-        public CustomerRepository()
+        public CustomerRepository(ApplicationDbContext db)
         {
-            _db = new ApplicationDbContext();
+            _db = db;
         }
 
         public bool Add(Customer customer)
