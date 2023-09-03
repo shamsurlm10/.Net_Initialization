@@ -1,12 +1,10 @@
 ﻿using Ecommerce.Models.EntityModels;
 using Ecommerce.Models.UtilityModels;
-using Ecommerce.Repositories;
 using Ecommerce.Repositories.Abstractions;
 using Ecommerce.WebApp.Models;
 using Ecommerce.WebApp.Models.CustomerList;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using System.ComponentModel.DataAnnotations;
 
 namespace Ecommerce.WebApp.Controllers
 {
@@ -46,7 +44,7 @@ namespace Ecommerce.WebApp.Controllers
 
         private CustomerCreate GetCustomerModelWithCategory()
         {
-            var categories = customerCategoryRepository.GetAll();
+            var categories = _customerCategoryRepository.GetAll();
             var categoryListItem = categories.Select(c => new SelectListItem()
             {
                 Value = c.Id.ToString(),
